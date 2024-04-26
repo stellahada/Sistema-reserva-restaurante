@@ -5,5 +5,3 @@ Modelagem/ WBS
 - Caso de uso
 - Diagrama de classe 
 - Modelo entidade relacionamento
-
-codigo 
