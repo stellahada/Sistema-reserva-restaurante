@@ -1,4 +1,4 @@
-# Projeto gestão de restaurante
+# Projeto sistema de reserva de restaurantes
  POO-2024-1-EQUIPE10
  
 Modelagem/ WBS
