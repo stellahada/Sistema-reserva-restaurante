@@ -92,13 +92,14 @@ public class BuscarRestaurante extends JFrame {
         frame.getContentPane().add(pesquisar);
        
 		//adicionando ao painel meio
-        painelMeio.add(criarJTextField(txtBuscar,distTopo));
+		txtBuscar = criarJTextField(20);
+        painelMeio.add(txtBuscar);
 		pesquisar.setBounds(760,20,120,30);
 		painelMeio.add(pesquisar);
 
 
 		// Criando objetos Restaurante
-		Restaurante restaurante1 = new Restaurante("Coco Bambu", new ImageIcon(getClass().getResource("coco-bambu-iguatemi.jpg")), 4);
+		Restaurante restaurante1 = new Restaurante("Coco Bambu", new ImageIcon(getClass().getResource("coco-bambu-iguatemi.jpg")), 5);
 		Restaurante restaurante2 = new Restaurante("Restaurante B", new ImageIcon(getClass().getResource("coco-bambu-iguatemi.jpg")), 3);
 		Restaurante restaurante3 = new Restaurante("Restaurante C", new ImageIcon(getClass().getResource("coco-bambu-iguatemi.jpg")), 4);
 
@@ -121,8 +122,8 @@ public class BuscarRestaurante extends JFrame {
 
        
 	}
-    private JTextField criarJTextField(JTextField jt, int distTopo) {
-        jt = new JTextField();
+    private JTextField criarJTextField(int distTopo) {
+        JTextField jt = new JTextField();
         jt.setFont(new Font("Garamond", Font.PLAIN, 20));
         jt.setSize(580,30);
         jt.selectAll();
@@ -138,13 +139,23 @@ public class BuscarRestaurante extends JFrame {
 			frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			novaBarra.setBounds(0, 0, frame.getWidth(), 40);
 			painelMeio.setBounds(0, 40, frame.getWidth(), frame.getHeight());
+			panel.setBounds(0,80, frame.getWidth(), frame.getHeight());
+			panel.setBackground(Color.BLACK);
+
+			pesquisar.setLocation(frame.getWidth()/2+270,20);
+			txtBuscar.setLocation(frame.getWidth()/4+20,20);
+
 			maximo.setText("❐");
 			apertou = true;
 		} else {
 			frame.setSize(1000, 600);
 			frame.setLocationRelativeTo(null);
 			novaBarra.setBounds(0, 0, frame.getWidth(), 40);
-			painelMeio.setBounds(0, 40, frame.getWidth(), frame.getHeight());
+			panel.setBounds(0, 100, frame.getWidth(), frame.getHeight());
+			
+			pesquisar.setLocation(760, 20);
+			txtBuscar.setLocation(170, 20);
+
 			maximo.setText("□");
 			apertou = false;
 		}
