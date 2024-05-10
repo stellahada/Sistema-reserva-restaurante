@@ -235,25 +235,7 @@ public class TelaCadastroADM {
 	}
 
 	public JButton criaBotao(int x, int y, int width, int heigth, String nome, String Texto) {
-		JButton jb = new JButton() {
-			@Override
-	        protected void paintBorder(Graphics g) {
-				setOpaque(false);
-				Graphics2D g2 = (Graphics2D) g.create();
-	            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-	            
-	            
-	            g2.setColor(new Color(255,180,91));
-	            g2.setBackground(new Color(255,180,91));
-	            
-	            g2.drawRoundRect(1, 1, getWidth()-2, getHeight()-2, 10, 10); // Desenhe o retângulo arredondado
-	            
-	            g2.dispose(); // Não descarte o contexto gráfico aqui
-	            
-	            
-	        }
-			
-		};
+		JButton jb = new JButton() 
 		jb.setText(Texto);
 		jb.setName(nome);
 		jb.setBackground(Color.BLACK);
