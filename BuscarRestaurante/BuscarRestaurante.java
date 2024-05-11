@@ -7,6 +7,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.geom.RoundRectangle2D;
+
 
 public class BuscarRestaurante extends JFrame {
     int distTopo = 20;
@@ -88,6 +90,7 @@ public class BuscarRestaurante extends JFrame {
 		pesquisar.setForeground(Color.black);
 		pesquisar.setFocusPainted(false);
 		pesquisar.setBorderPainted(false);
+	
 
         frame.getContentPane().add(pesquisar);
        
@@ -99,7 +102,7 @@ public class BuscarRestaurante extends JFrame {
 
 
 		// Criando objetos Restaurante
-		Restaurante restaurante1 = new Restaurante("Coco Bambu", new ImageIcon(getClass().getResource("coco-bambu-iguatemi.jpg")), 5);
+		Restaurante restaurante1 = new Restaurante("Coco Bambu", new ImageIcon(getClass().getResource("coco-bambu-iguatemi.jpg")), 1);
 		Restaurante restaurante2 = new Restaurante("Restaurante B", new ImageIcon(getClass().getResource("coco-bambu-iguatemi.jpg")), 3);
 		Restaurante restaurante3 = new Restaurante("Restaurante C", new ImageIcon(getClass().getResource("coco-bambu-iguatemi.jpg")), 4);
 
@@ -111,11 +114,13 @@ public class BuscarRestaurante extends JFrame {
 
 		// Criando o RestaurantePanel com a lista de restaurantes
 		ListaRestaurante panelRestaurantes = new ListaRestaurante(restaurantes);
-		panelRestaurantes.setPreferredSize(new Dimension(500, 400)); //tamanho do painel restaurante
-		panel.setBounds(250,100,0,0);
+		panelRestaurantes.setPreferredSize(new Dimension(600, 600)); //tamanho do painel restaurante
+		panel.setBounds(400/2-247,300/2-100, 495, 25);
+
 		//adionando a um painel
 		panel.add(panelRestaurantes); 
-		panel.setSize(500, 400); //tamanho do painel
+		panel.setBackground(Color.BLACK);
+		panel.setBounds(0, 100, frame.getWidth(), frame.getHeight()); //tamanho do painel
 		painelMeio.add(panel);
 
         frame.setVisible(ligaTela);
@@ -123,15 +128,36 @@ public class BuscarRestaurante extends JFrame {
        
 	}
     private JTextField criarJTextField(int distTopo) {
-        JTextField jt = new JTextField();
-        jt.setFont(new Font("Garamond", Font.PLAIN, 20));
+        JTextField jt = new JTextField(){        
+		
+			//Pesquisar 
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				Graphics2D graphics2D = (Graphics2D) g.create();
+				int width = getWidth();
+				int height = getHeight();
+				int cornerRadius = 10;
+				RoundRectangle2D roundedRectangle = new RoundRectangle2D.Float(0, 0, width - 1, height - 1, cornerRadius,cornerRadius);
+				graphics2D.setColor(getBackground());
+				graphics2D.setColor(getForeground());
+				graphics2D.setStroke(new BasicStroke(5));
+				graphics2D.draw(roundedRectangle);
+				graphics2D.dispose();
+				
+			  
+			}
+			
+		};
         jt.setSize(580,30);
         jt.selectAll();
+		jt.setBorder(null);
+		jt.setBackground(Color.gray);
+		jt.setText("Digite o nome do restaurante que deseja Alterar"); 
+		jt.setForeground(Color.black);
         jt.setLocation(170, distTopo);
         return jt;
     }
-
-	
 
 	// Metodo para maximizar a tela e desmaximizar
 	public void maximiza(ActionEvent actionEvent) {
@@ -141,7 +167,6 @@ public class BuscarRestaurante extends JFrame {
 			painelMeio.setBounds(0, 40, frame.getWidth(), frame.getHeight());
 			panel.setBounds(0,80, frame.getWidth(), frame.getHeight());
 			panel.setBackground(Color.BLACK);
-
 			pesquisar.setLocation(frame.getWidth()/2+270,20);
 			txtBuscar.setLocation(frame.getWidth()/4+20,20);
 
@@ -171,6 +196,19 @@ public class BuscarRestaurante extends JFrame {
 		botao.setFont(fonte);
 		return botao;
 	}
+	
+	public MouseAdapter eventoMouseField(JTextField j) {
+		MouseAdapter evento = null;
+		if(j.getName().equalsIgnoreCase("Texto")){
+			evento = new java.awt.event.MouseAdapter() {
+				 public void mouseClicked(java.awt.event.MouseEvent evt) {
+				       j.setText("");
+				    }
+				    };
+		}
+		return evento;
+	}
+
 	//Metodo adiciona evento de mouse botoes
 	public MouseAdapter eventoMouse(JButton botao) {
 		MouseAdapter evento = null;
