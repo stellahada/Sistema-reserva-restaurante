@@ -1,4 +1,4 @@
-# Projeto sistema de reserva de restaurantes
+# Projeto sistema de reserva de restaurantes 🍽️🍲🧑‍🍳
 O sistema de reserva de restaurantes estrelados visa facilitar a reserva de mesas em restaurantes de alta qualidade e renome. Os usuários podem explorar os restaurantes disponíveis, verificar a disponibilidade de mesas, fazer reservas e gerenciar suas reservas existentes. O sistema deve ser intuitivo, eficiente e seguro.
 
 <img width="2324" alt="Frame 1" src="https://github.com/stellahada/POO-2024-1-EQUIPE10/assets/91349698/d0a65634-d275-40c0-aeb5-9439dcd7da10">
